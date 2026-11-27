@@ -27,4 +27,12 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store*.class
+.DS_Store
+
+### Compiled class files ###
+*.class
+
+### Gradle ###
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar

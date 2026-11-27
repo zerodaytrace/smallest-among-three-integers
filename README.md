@@ -16,11 +16,37 @@ A simple Java console program that reads three integers from the user and prints
 
 ## Build and Run
 
+This project uses [Gradle](https://gradle.org/) via the Gradle **wrapper**, so
+you do not need Gradle installed — the wrapper downloads the exact pinned
+version (Gradle 9.9.2) and verifies it against a checksum. You only need a
+JDK 21.
+
 From the project root:
 
 ```bash
-javac -d out/production/SmallestAmongThreeIntegers src/*.java
-java -cp out/production/SmallestAmongThreeIntegers SmallestAmongThreeIntegers
+# Build (compiles and produces build/libs/SmallestAmongThreeIntegers.jar)
+./gradlew build
+
+# Run the application
+./gradlew run
+```
+
+On Windows, use `gradlew.bat` instead of `./gradlew`.
+
+### Reproducible builds
+
+The build is configured to be **reproducible** — building the same source
+produces a byte-for-byte identical jar on any machine. This is achieved by:
+
+- Pinning the Gradle version and JDK toolchain (Gradle 9.9.2 + Java 21).
+- Stripping embedded timestamps and normalizing file order/permissions in all
+  archives.
+
+You can verify it:
+
+```bash
+./gradlew clean jar && sha256sum build/libs/*.jar
+./gradlew clean jar && sha256sum build/libs/*.jar   # same hash both times
 ```
 
 ## Example

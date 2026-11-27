@@ -8,9 +8,17 @@ public class SmallestAmongThreeIntegers {
         int secondNum = CheckUserInput.readInteger(scanner, "Input second integer: ");
         int thirdNum = CheckUserInput.readInteger(scanner, "Input third integer: ");
 
-        System.out.println(FindSmallestOfThreeIntegers.smallestOfThreeIntegers(firstNum, secondNum, thirdNum));
+        SmallestResult result = FindSmallestOfThreeIntegers.smallestWithTieInfo(firstNum, secondNum, thirdNum);
+
+        if (result.isTie()) {
+            System.out.printf("Tie! %d is the smallest, appearing %d of 3 times.%n",
+                    result.value(), result.occurrences());
+        } else {
+            System.out.println(result.value());
+        }
 
         scanner.close();
     }
 
 }
+

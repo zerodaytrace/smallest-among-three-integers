@@ -14,4 +14,22 @@ public class CheckUserInput {
         }
         return scanner.nextInt();
     }
+
+    // Asks a yes/no question and keeps re-prompting until the user enters a valid
+    // answer: 'y'/'yes' returns true, 'n'/'no' returns false, all case-insensitive
+    static boolean readYesOrNo(Scanner scanner, String prompt) {
+        while (true) {
+            System.out.print(prompt);
+            String answer = scanner.next();
+
+            if (answer.equalsIgnoreCase("y") || answer.equalsIgnoreCase("yes")) {
+                return true;
+            }
+            if (answer.equalsIgnoreCase("n") || answer.equalsIgnoreCase("no")) {
+                return false;
+            }
+
+            System.out.println("Please answer with 'y' or 'n'.");
+        }
+    }
 }
